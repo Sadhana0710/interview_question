@@ -1,0 +1,60 @@
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.next_node = None
+
+class LinkedList:
+  def __init__(self):
+    self.head = None
+    self.no_of_nodes = 0
+
+  def insert(self, data):
+    self.no_of_nodes += 1
+    new = Node(data)
+    if not self.head:
+      self.head = new
+    else:
+      new.next_node = self.head
+      self.head = new
+
+  def traverse(self):
+    temp = self.head
+    while(temp):
+      print(temp.data)
+      temp = temp.next_node
+
+
+  def check_pal(self):
+    slow = self.head
+    fast = self.head
+    while(fast and fast.next_node):
+      slow = slow.next_node
+      fast = fast.next_node.next_node
+    print(slow.data)
+    curr = slow
+    pre = None
+    next = None
+    while(curr):
+      next = curr.next_node
+      curr.next_node = pre
+      pre = curr
+      curr = next
+
+    t = self.head
+    while(pre):
+      if t.data != pre.data:
+        return False
+      t = t.next_node
+      pre = pre.next_node
+    return True
+
+
+
+obj = LinkedList()
+a = "levfgel"
+for i in a:
+  obj.insert(i)
+
+print(obj.check_pal())
+
+
