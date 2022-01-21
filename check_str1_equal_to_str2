@@ -1,0 +1,14 @@
+s1 = "cadhana"
+s2 = "acandah"
+
+d = [0]*26;
+
+for i in range(len(s1)):
+    d[ ord(s1[i]) - ord('a') ] += 1
+    d[ ord(s2[i]) - ord('a') ] -= 1
+    
+for val in d :
+    if( val != 0 ):
+        print( "NO" )
+else:
+    print( "YES ")
